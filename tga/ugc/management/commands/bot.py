@@ -56,12 +56,12 @@ def check(update, context):
         )
         context.user_data["state"] = globals.STATES["reg"]
 
-    elif not db_user["first_name"]:
-        update.message.reply_text(
-            text=globals.TEXT_ENTER_FIRST_NAME[db_user['lang_id']],
-            reply_markup=ReplyKeyboardRemove()
-        )
-        context.user_data["state"] = globals.STATES["reg"]
+    # elif not db_user["first_name"]:
+    #     update.message.reply_text(
+    #         text=globals.TEXT_ENTER_FIRST_NAME[db_user['lang_id']],
+    #         reply_markup=ReplyKeyboardRemove()
+    #     )
+    #     context.user_data["state"] = globals.STATES["reg"]
     #
     # elif not db_user["last_name"]:
     #     update.message.reply_text(
@@ -127,12 +127,12 @@ def check_data_decorator(func):
                 )
                 context.user_data["state"] = globals.STATES["reg"]
 
-            elif not db_user["first_name"]:
-                update.message.reply_text(
-                    text=globals.TEXT_ENTER_FIRST_NAME[db_user['lang_id']],
-                    reply_markup=ReplyKeyboardRemove()
-                )
-                context.user_data["state"] = globals.STATES["reg"]
+            # elif not db_user["first_name"]:
+            #     update.message.reply_text(
+            #         text=globals.TEXT_ENTER_FIRST_NAME[db_user['lang_id']],
+            #         reply_markup=ReplyKeyboardRemove()
+            #     )
+            #     context.user_data["state"] = globals.STATES["reg"]
 
             # elif not db_user["last_name"]:
             #     update.message.reply_text(
@@ -232,9 +232,9 @@ def message_handler(update, context):
                     text=globals.TEXT_LANG_WARNING
                 )
 
-        elif not db_user["first_name"]:
-            db.update_user_data(user.id, "first_name", message)
-            check(update, context)
+        # elif not db_user["first_name"]:
+        #     db.update_user_data(user.id, "first_name", message)
+        #     check(update, context)
 
         # elif not db_user["last_name"]:
         #     db.update_user_data(user.id, "last_name", message)
@@ -292,7 +292,7 @@ def message_handler(update, context):
 
                 update.message.reply_text(
                     text=f"<b>Ma'lumotlarim:</b>\n\n"
-                         f"👤 <b>Ism-familiya:</b> {db_user['first_name']}\n"
+                         # f"👤 <b>Ism-familiya:</b> {db_user['first_name']}\n"
                          f"📞 <b>Telefon raqam:</b> {db_user['phone_number']} \n\n"
                          f"📥 <b>Buyurtmalarim:</b> \n"
                          f"{text}",
@@ -720,7 +720,7 @@ def location_handler(update, context):
     context.bot.send_message(
         chat_id=ADMIN_ID,
         text=f"<b>Yangi buyurtma:</b>\n\n"
-             f"👤 <b>Ism-familiya:</b> {db_user['first_name']}\n"
+             # f"👤 <b>Ism-familiya:</b> {db_user['first_name']}\n"
              f"📞 <b>Telefon raqam:</b> {db_user['phone_number']} \n"
              f"💸 <b>To'lov usuli:</b> {globals.PAYMENT[context.user_data['payment_type']]}\n\n"
              f"📥 <b>Buyurtma:</b> \n"
